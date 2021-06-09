@@ -1,0 +1,1 @@
+// This is where images and all the items that remain static and do not change.
