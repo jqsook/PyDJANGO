@@ -10,7 +10,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <!-- This style in the title for the use of JINGA- it works between HTML/Python -->
+    <!-- This style in the title for the use of JINGO- it works between HTML/Python -->
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <!-- Header -->
@@ -50,6 +50,23 @@
 
   <body>
     <main>
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, messages in messages %} {% if category ==
+      'error' %}
+      <div class="alert alert-danger alert-dismassable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% else %}
+      <div class="alert alert-success alert-dismassable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %} {% endfor %} {% endif %} {% endwith %}
       <div class="container-fluid">{% block content %} {% endblock %}</div>
     </main>
 
