@@ -50,6 +50,7 @@
 
   <body>
     <main>
+      <!-- There is an issue with this location and how it displays when active- it doesn't fully show or allow for closing -->
       {% with messages = get_flashed_messages(with_categories=true) %} {% if
       messages %} {% for category, messages in messages %} {% if category ==
       'error' %}
