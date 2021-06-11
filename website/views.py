@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from werkzeug import datastructures
+# from werkzeug import datastructures
 from .models import Note
 from . import db
 import json
@@ -28,11 +28,12 @@ def home():
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
     note = json.loads(request.data)
-    noteId = datastructures['noteId']
+    noteId = note['noteId']
     note = Note.query.get(noteId)
     if note:
         if note.user_id == current_user.id:
             db.session.delete(note)
             db.session.commit()
 
+    # returns an empty json dictionary- returning something is required.
     return jsonify({})
