@@ -1,6 +1,9 @@
-//Script tag to include in the base html file to import this index file into the html.
-
-//    <!-- <script
-//       src="{{ url_for('static, filename='index.js') }}"
-//       type="text/javascript"
-//     ></script> -->
+function deleteNote(noteId) {
+    fetch('/delete-note', {  //The delete-note is the end point
+        method: 'POST',
+        body: JSON.stringify({ noteId: noteId })
+    }).then((_res) => {
+        window.location.href = "/"; //refreshes the page
+    });
+}
+// Basic request sent to the back end to delete the note and reset the window.
